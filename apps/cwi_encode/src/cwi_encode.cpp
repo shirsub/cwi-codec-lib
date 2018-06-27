@@ -80,3 +80,12 @@ int __declspec(dllexport) cwi_encoder(encoder_params param, void* pc, std::strin
 	evaluate_comp_impl<PointXYZRGB> evaluate(argc,argv);
 	return evaluate.evaluator(param, pc, comp_frame) == true ? 0 : -1;
 }
+
+
+int __declspec(dllexport) cwi_decoder(encoder_params param, void* pc, std::stringstream& comp_frame)
+{
+	int argc = 0;
+	char *argv[] = { NULL };
+	evaluate_comp_impl<PointXYZRGB> evaluate(argc, argv);
+	return evaluate.evaluate_dc(param, pc, comp_frame) == true ? 0 : -1;
+}
